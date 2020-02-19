@@ -37,7 +37,7 @@ int main(int argc, char * argv[])
 						
 					}
 					int readGame = readGamePieaces(infile, gamePieces, horizontalExt, verticalExt);
-					cout << gamePieces.size() << endl;
+					
 
 
 

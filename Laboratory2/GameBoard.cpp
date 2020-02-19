@@ -76,10 +76,10 @@ int printBoard(const vector<game_piece>& vector, unsigned int width, unsigned he
 	if ((width * height) != vector.size()) {
 		return dimensionError; 
 	}
-	for (int i = 0; i < height; i++) {
-		for (int j = 0; j < width; j++) {
+	for (int i = 0; i < width; i++) {
+		for (int j = height-1; j >=0; j--) {
 			  
-		std:cout << vector[width * i + j].pieceDisplay; 
+		std:cout << vector[width * j + i].pieceDisplay; 
 		}
 		cout << endl; 
 		
