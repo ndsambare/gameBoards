@@ -17,7 +17,7 @@ int main(int argc, char * argv[])
 {
 	if (argc == correctNumArgs) {
 		ifstream infile;
-		string word = argv[programName];
+		string word = argv[inputName];
 		infile.open(word);
 			 if (infile.is_open()) {
 				 unsigned int horizontalExt; 
@@ -37,6 +37,10 @@ int main(int argc, char * argv[])
 						
 					}
 					int readGame = readGamePieaces(infile, gamePieces, horizontalExt, verticalExt);
+					cout << gamePieces.size() << endl;
+
+
+
 					if (readGame != pieceError) {
 						int printGame = printBoard(gamePieces, horizontalExt, verticalExt); 
 						return printGame; 

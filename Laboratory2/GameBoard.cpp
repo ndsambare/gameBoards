@@ -12,6 +12,7 @@ using namespace std;
 int gameDim(ifstream& alpha, unsigned int& width, unsigned int& height) {
 	string line; 
 	if (getline(alpha, line)) {
+		
 		istringstream iss(line);
 		if (iss >> width) {
 
@@ -42,28 +43,32 @@ int readGamePieaces(ifstream& alpha, vector<game_piece>& game_piece_vec, unsigne
 	int widthStream;
 	int heightStream;
 	while (getline(alpha, line)) {
+		
 		istringstream iss(line);
 		if (iss >> color >> name >> display >> widthStream >> heightStream) {
-			if (!string_to_piece(color) == invalid_color && !widthStream >= width && !heightStream >= height) {
+			if (string_to_piece(color) != invalid_color && widthStream < width && heightStream < height && widthStream >= 0 && heightStream >= 0) {
 				
 				int index = width * heightStream + widthStream; 
 				game_piece_vec[index].pieceName = name; 
 				game_piece_vec[index].pieceDisplay = display; 
-				game_piece_vec[index].colorPiece = string_to_piece(color);
-				return success; 
+				game_piece_vec[index].colorPiece = string_to_piece(color); 
 			}
 			else {
-				return pieceError; 
+				continue; 
+				
 			}
 
 			
 
 		}
 		else {
-			return pieceError; 
+			continue; 
 		}
 		
 	}
+	
+	return success;
+
 }
 
 int printBoard(const vector<game_piece>& vector, unsigned int width, unsigned height) {
