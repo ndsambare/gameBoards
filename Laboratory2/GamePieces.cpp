@@ -1,32 +1,44 @@
-#include "GamePieces.h"
+#include "GamePiecess.h"
 #include <iostream>
 
 #include <vector>
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <string>
+#include "Header2.h"
+
+using namespace std; 
+
 
 string pieces_to_lower(piece_color col) {
 	if (col == red) {
-	std:cout << "red" << endl; 
+		
+	cout << "red" << endl; 
+	return "red";
 	}
 	else if (col == black) {
-		std::cout << "black" << endl; 
+		return "black";
+		cout << "black" << endl; 
 
 	}
 	else if (col == white) {
-	std:cout << "white" << endl; 
+		return "white";
+	cout << "white" << endl; 
 	}
 	else if (col == invalid_color) {
-	std:cout << "invalid_color" << endl; 
+		return "invalid_color";
+	cout << "invalid_color" << endl; 
 
 	}
-	else if (col == no_color) {
-	std:cout << "no_color" << endl; 
+	else  {
+		return "no_color"; 
+	cout << "no_color" << endl; 
 	}
 }
 
 piece_color string_to_piece(string rock) {
+	lowerString(rock); 
 	if (rock == "red") {
 		return red;
 	}
@@ -44,8 +56,10 @@ piece_color string_to_piece(string rock) {
 	}
 }
 
-struct game_pieces {
-	piece_color x; 
-	string pieceName; 
-	string pieceDisplay; 
-};
+
+game_piece::game_piece(piece_color x, string pieceName, string pieceDisplay) {
+	colorPiece = x; 
+	pieceName = pieceName; 
+	pieceDisplay = pieceDisplay; 
+	}
+	

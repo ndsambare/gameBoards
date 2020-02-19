@@ -5,6 +5,9 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include "Header2.h"
+#include "GamePiecess.h"
+using namespace std;
 
 int gameDim(ifstream& alpha, unsigned int& width, unsigned int& height) {
 	string line; 
@@ -13,16 +16,17 @@ int gameDim(ifstream& alpha, unsigned int& width, unsigned int& height) {
 		if (iss >> width) {
 
 			if (iss >> height) {
-				return success; 
+				return success;
 			}
 			else {
-				return heightError; 
+				return heightError;
 			}
+		}
 		else {
 			return widthError; 
 		}
 			
-			}
+			
 		
 	}
 	else {
@@ -41,12 +45,40 @@ int readGamePieaces(ifstream& alpha, vector<game_piece>& game_piece_vec, unsigne
 		istringstream iss(line);
 		if (iss >> color >> name >> display >> widthStream >> heightStream) {
 			if (!string_to_piece(color) == invalid_color && !widthStream >= width && !heightStream >= height) {
-				//code will be correct
+				
+				int index = width * heightStream + widthStream; 
+				game_piece_vec[index].pieceName = name; 
+				game_piece_vec[index].pieceDisplay = display; 
+				game_piece_vec[index].colorPiece = string_to_piece(color);
+				return success; 
+			}
+			else {
+				return pieceError; 
 			}
 
 			
 
 		}
+		else {
+			return pieceError; 
+		}
 		
 	}
+}
+
+int printBoard(const vector<game_piece>& vector, unsigned int width, unsigned height) {
+
+	if ((width * height) != vector.size()) {
+		return dimensionError; 
+	}
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			  
+		std:cout << vector[width * i + j].pieceDisplay; 
+		}
+		cout << endl; 
+		
+	}
+	return success; 
+	
 }

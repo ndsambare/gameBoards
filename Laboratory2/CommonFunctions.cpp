@@ -13,7 +13,7 @@ int usageFunction(string programName, string programInfo) {
 }
 
 void lowerString(string & alpha) {
-	for (int i = alpha.begin; i < alpha.end; i++) {
+	for (int i = 0; i < alpha.size(); i++) {
 		if (alpha[i] >= 65 && alpha[i] <= 90) {
 			alpha[i] = alpha[i] + 32; 
 		}

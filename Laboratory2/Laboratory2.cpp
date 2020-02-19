@@ -8,10 +8,60 @@
 #include <string>
 #include <sstream>
 #include "Header1.h"
+#include "GameBoard.h"
+#include "GamePiecess.h"
 
-int main()
+
+
+int main(int argc, char * argv[])
 {
-    std::cout << "Hello World!\n";
+	if (argc == correctNumArgs) {
+		ifstream infile;
+		string word = argv[programName];
+		infile.open(word);
+			 if (infile.is_open()) {
+				 unsigned int horizontalExt; 
+				 unsigned int verticalExt; 
+				int gameDimReturn = gameDim(infile, horizontalExt, verticalExt);
+
+				while (gameDimReturn == widthError || gameDimReturn == heightError) {
+					gameDimReturn = gameDim(infile, horizontalExt, verticalExt); 
+					
+
+				}
+				if (gameDimReturn == success) {
+					vector<game_piece> gamePieces; 
+					for (int i = 0; i < horizontalExt * verticalExt; i++) {
+						
+							gamePieces.push_back(game_piece(no_color, "", " ")); 
+						
+					}
+					int readGame = readGamePieaces(infile, gamePieces, horizontalExt, verticalExt);
+					if (readGame != pieceError) {
+						int printGame = printBoard(gamePieces, horizontalExt, verticalExt); 
+						return printGame; 
+					}
+					else {
+						std::cout << "There was an error in reading the game piece"; 
+						return pieceError; 
+					}
+
+				}
+				else {
+					cout << "Went through file but found no dimensions"; 
+					return dimensionError; 
+
+				}
+		}
+			 else {
+				 std::cout << "There was an input error." << endl; 
+				 return failInput; 
+			 }
+	}
+	else {
+		return usageFunction(argv[programName], "Not Enough Arguments");
+	}
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

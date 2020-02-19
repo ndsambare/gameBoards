@@ -10,7 +10,8 @@ piece_color string_to_piece(string);
 string pieces_to_lower(piece_color); 
 
 struct game_piece {
-	piece_color x;
+	game_piece(piece_color x, string pieceName, string pieceDisplay);
+	piece_color colorPiece;
 	string pieceName;
 	string pieceDisplay;
 };
