@@ -57,9 +57,9 @@ piece_color string_to_piece(string rock) {
 }
 
 
-game_piece::game_piece(piece_color x, string pieceName, string pieceDisplay) {
+game_piece::game_piece(piece_color x, string _pieceName, string _pieceDisplay) {
 	colorPiece = x; 
-	pieceName = pieceName; 
-	pieceDisplay = pieceDisplay; 
+	pieceName = _pieceName; 
+	pieceDisplay = _pieceDisplay; 
 	}
 	

@@ -47,7 +47,7 @@ int readGamePieaces(ifstream& alpha, vector<game_piece>& game_piece_vec, unsigne
 		istringstream iss(line);
 		if (iss >> color >> name >> display >> widthStream >> heightStream) {
 			if (string_to_piece(color) != invalid_color && widthStream < width && heightStream < height && widthStream >= 0 && heightStream >= 0) {
-				
+				cout << widthStream <<" " << heightStream << endl; 
 				int index = width * heightStream + widthStream; 
 				game_piece_vec[index].pieceName = name; 
 				game_piece_vec[index].pieceDisplay = display; 
@@ -76,10 +76,10 @@ int printBoard(const vector<game_piece>& vector, unsigned int width, unsigned he
 	if ((width * height) != vector.size()) {
 		return dimensionError; 
 	}
-	for (int i = 0; i < width; i++) {
-		for (int j = height-1; j >=0; j--) {
+	for (int i = height-1; i >= 0; i--) {
+		for (int j = 0; j < width; j++) {
 			  
-		std:cout << vector[width * j + i].pieceDisplay; 
+		std:cout << vector[width * i + j].pieceDisplay; 
 		}
 		cout << endl; 
 		

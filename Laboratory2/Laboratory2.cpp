@@ -31,8 +31,9 @@ int main(int argc, char * argv[])
 				}
 				if (gameDimReturn == success) {
 					vector<game_piece> gamePieces; 
+					cout << horizontalExt << endl; 
+					cout << verticalExt << endl; 
 					for (int i = 0; i < horizontalExt * verticalExt; i++) {
-						
 							gamePieces.push_back(game_piece(no_color, "", " ")); 
 						
 					}
