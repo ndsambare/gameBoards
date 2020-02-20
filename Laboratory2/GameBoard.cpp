@@ -47,7 +47,7 @@ int readGamePieaces(ifstream& alpha, vector<game_piece>& game_piece_vec, unsigne
 		istringstream iss(line);
 		if (iss >> color >> name >> display >> widthStream >> heightStream) {
 			if (string_to_piece(color) != invalid_color && widthStream < width && heightStream < height && widthStream >= 0 && heightStream >= 0) {
-				cout << widthStream <<" " << heightStream << endl; 
+				
 				int index = width * heightStream + widthStream; 
 				game_piece_vec[index].pieceName = name; 
 				game_piece_vec[index].pieceDisplay = display; 
